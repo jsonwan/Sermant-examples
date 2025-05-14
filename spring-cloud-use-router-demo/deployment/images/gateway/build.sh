@@ -1,8 +1,8 @@
-#!/bin/bash;
-
+#!/bin/bash
+imageRegistry=$1
 version=1.0.0
-name=gateway
+name=spring-cloud-use-router-demo/gateway
 dockerFile=Dockerfile
-imageName=$name:$version
+imageName="${imageRegistry}/$name:$version"
 docker build -f $dockerFile -t $imageName .
 docker push $imageName

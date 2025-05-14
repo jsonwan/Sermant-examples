@@ -15,6 +15,7 @@ spec:
         app: gateway
         sermant-injection: enabled
     spec:
+      serviceAccountName: query-api-account
       containers:
         - name: gateway
           image: gateway:1.0.0

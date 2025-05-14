@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: query-api
+rules:
+  - apiGroups:
+      - ""
+      - batch
+      - extensions
+      - apps
+    resources:
+      - jobs
+      - secrets
+      - configmaps
+      - services
+      - pods
+      - endpoints
+    verbs:
+      - get
+      - list
+      - watch
