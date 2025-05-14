@@ -23,6 +23,7 @@
         <module>database-write-prohibition-demo</module>
         <module>xds-demo</module>
         <module>mq-gray-demo</module>
+        <module>spring-cloud-use-router-demo</module>
     </modules>
 
     <properties>
