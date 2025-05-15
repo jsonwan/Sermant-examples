@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  labels:
-    app: backend
+  name: backend-v1
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: backend
+      version: v1
   template:
     metadata:
       labels:
         app: backend
+        version: v1
     spec:
       serviceAccountName: query-api-account
       containers:
@@ -21,6 +21,36 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          env:
+            - name: version
+              value: "v1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v2
+    spec:
+      serviceAccountName: query-api-account
+      containers:
+        - name: backend
+          image: backend:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            - name: version
+              value: "v2"
 ---
 apiVersion: v1
 kind: Service
